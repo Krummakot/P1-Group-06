@@ -1,0 +1,13 @@
+First problem we ran into was when trying to convert the program to Android we decided to use
+a touchStarted() function, which for some reason made it so that the mouseX and mouseY wasn't
+updated correctly.
+
+Since many devices can vary in resolution, the buttons wouldn't work on anything other than
+the original device, so we created a way to scale by resolution so that it would work for
+any resolution.
+
+The animation is quite simple, but at the start it would jitter when the edge of the window
+was hit, because the x and y value for the image could for one frame be more than the width
+and height of the screen, this was resolved by adding a way to check if for the next frame
+the x and y value of the image would be more than the width and height of the window.
+Equation looks like this: animX > width-(animSpeedX*resScaleX)
