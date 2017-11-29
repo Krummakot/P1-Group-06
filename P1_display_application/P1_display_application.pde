@@ -9,7 +9,7 @@ int homeX, homeY, homeSizeX, homeSizeY;
 
 float rotX, rotY;
 
-boolean page1, pageHow, page3D, pageAnim;
+boolean page1, pageHow, page3D, homeAnim;
 
 Pages pages = new Pages();
 
@@ -38,16 +38,17 @@ void setup() {
 }
 
 void draw() {
+  println(page1);
   if (page1) {
     pages.frontPage();
   }
 
-  if (pageHow && pageAnim) {
-    pages.howHome();
+  if (pageHow && homeAnim) {
+    pages.goHome(imgHow);
   }
 
-  if (pageHow && !pageAnim) {
-    pages.pageHow();
+  if (pageHow && !homeAnim) {
+    pages.pageChange(imgHow);
   }
 
   if (page3D) {
@@ -91,7 +92,7 @@ void mousePressed() {
     if (mouseX > homeX && mouseX < homeX+homeSizeX &&
       mouseY > homeY && mouseY < homeY+homeSizeY) {
       println("page 1");
-      pageAnim = true;
+      homeAnim = true;
       page1 = true;
     }
   }
